@@ -21,33 +21,27 @@ const Search = ():JSX.Element => {
 	
 	const fetchData = async () => {
 		const searchKeyword = Value;
+		console.log(searchKeyword)
 
 		try {
 			if (searchKeyword === "") {
 				setMovies([]);
 				setValue("");
 			} else {
-				const { data } = await axios.get('/v1/search/movie.json', 
+				const { data } = await axios.get('/api/search', 
 					{
 						params: {
-							query: searchKeyword,
-							display: 100
-						},
-						headers: {
-							'X-Naver-Client-Id': process.env.REACT_APP_CLIENT_ID as string, 
-							'X-Naver-Client-Secret': process.env.REACT_APP_CLIENT_SECRET as string 
+							query: searchKeyword
 						}
 					}
 				)
-
 				console.log(data);
-
-				setMovies(data.items)
+				setMovies(data);
 			}
 		} catch (error) {
 			let message = 'Unknown Error'
 			if (error instanceof Error) message = error.message
-			alert(message);
+			console.log(message);
 		}
 	}
 
