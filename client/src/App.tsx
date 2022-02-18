@@ -9,7 +9,6 @@ import {
 
 import NavBar from './components/views/NavBar/NavBar'
 import LandingPage from './components/views/LandingPage/LandingPage';
-import MovieDetail from './components/views/MovieDetail/MovieDetail';
 import NotFound from './components/views/NotFound/NotFound';
 
 function App():JSX.Element {
@@ -19,7 +18,6 @@ function App():JSX.Element {
 				<NavBar />
 					<Routes>
 						<Route path="/" element={ <LandingPage /> } />
-						<Route path="/" element={ <MovieDetail /> } />
 						<Route path="*" element={ <NotFound /> } />
 					</Routes>
 			</Router>
