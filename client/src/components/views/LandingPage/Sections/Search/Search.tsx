@@ -18,9 +18,11 @@ export interface movieType {
 const Search = ():JSX.Element => {
 	const [Movies, setMovies] = useState([]);
 	const [Value, setValue] = useState("");
+	const [Loading, setLoading] = useState(false);
 	
 	const fetchData = async () => {
 		const searchKeyword = Value;
+		setLoading(true);
 
 		try {
 			if (searchKeyword === "") {
@@ -42,6 +44,8 @@ const Search = ():JSX.Element => {
 			if (error instanceof Error) message = error.message
 			console.log(message);
 		}
+
+		setLoading(false);
 	}
 
 	const resultTitle = () => {
@@ -91,24 +95,26 @@ const Search = ():JSX.Element => {
 						</form>
 					</div>
 					<div className="search-result">
-						<h2 className="result-title">
-							{ }
-						</h2>
+						<h2 className="result-title"></h2>
 						{
-							Movies && 
-							Movies.map((movie: movieType, idx: number) => (
-								<SearchResult 
-									key={ idx }
-									actor={ movie.actor }
-									director={ movie.director }
-									image={ movie.image }
-									link={ movie.link }
-									pubDate={ movie.pubDate }
-									subtitle={ movie.subtitle }
-									title={ movie.title }
-									userRating={ movie.userRating }
-								/>
-							)) 
+							Loading 
+							? (<div className="fallback-message">Laoding...</div>)
+							: (
+								Movies && 
+								Movies.map((movie: movieType, idx: number) => (
+									<SearchResult 
+										key={ idx }
+										actor={ movie.actor }
+										director={ movie.director }
+										image={ movie.image }
+										link={ movie.link }
+										pubDate={ movie.pubDate }
+										subtitle={ movie.subtitle }
+										title={ movie.title }
+										userRating={ movie.userRating }
+									/>
+								)) 
+							)
 						}
 					</div>
 				</div>
