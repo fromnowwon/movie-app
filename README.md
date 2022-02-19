@@ -1,5 +1,7 @@
 # Movie search App - MERN Stack
 
+📎 [Demo](https://nemo-movie-app.herokuapp.com/)
+
 ## Introduction
 - 영화 검색 기능, 랭킹 정보가 있는 애플리케이션입니다.
 - 네이버 OPEN API로 검색 기능을 구현하였습니다. 
