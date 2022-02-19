@@ -22,7 +22,10 @@ const Search = ():JSX.Element => {
 	
 	const fetchData = async () => {
 		const searchKeyword = Value;
+		const $resultTitle = document.querySelector('.result-title') as HTMLElement
+	
 		setLoading(true);
+		$resultTitle.innerHTML = "";
 
 		try {
 			if (searchKeyword === "") {
