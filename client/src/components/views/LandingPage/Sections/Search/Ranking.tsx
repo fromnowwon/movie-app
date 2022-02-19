@@ -21,7 +21,7 @@ const Ranking = () => {
 
 		window.setInterval(() => {
 			$rolling.style.transitionDuration = "400ms";
-			$rolling.style.marginTop = "-34px";
+			$rolling.style.marginTop = "-45px";
 
 			window.setTimeout(() => {
 				$rolling.style.transitionDuration = "";
