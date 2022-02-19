@@ -35,14 +35,19 @@ const Search = ():JSX.Element => {
 						}
 					}
 				)
-				console.log(data);
 				setMovies(data);
+				resultTitle();
 			}
 		} catch (error) {
 			let message = 'Unknown Error'
 			if (error instanceof Error) message = error.message
 			console.log(message);
 		}
+	}
+
+	const resultTitle = () => {
+		const $resultTitle = document.querySelector('.result-title') as HTMLElement
+		$resultTitle.innerHTML = `"${Value}"의 검색 결과`
 	}
 
 	const keywordChange = (e: { preventDefault: () => void; target: { value: string }; }) => {
@@ -69,10 +74,6 @@ const Search = ():JSX.Element => {
 		}
 	}
 
-	useEffect(() => {
-		fetchData();
-	}, [])
-
 	return (
 		<section className="search-section">
 			<div className="flex-grid flex-grid--wrap">
@@ -80,17 +81,20 @@ const Search = ():JSX.Element => {
 				<div className="search-cont">
 					<div className="search-form">
 						<h2>영화 검색</h2>
-						<form onSubmit={ submitKeyword } className="flex-grid">
+						<form onSubmit={ submitKeyword }>
 							<label htmlFor="name" className="form__label">
 								<input type="text" id="movie-title" className="form__input" name="movie_title" onChange={ keywordChange } placeholder="영화 제목을 입력해주세요." required />
 								<div className="validation-note">영화 제목이 입력되지 않았습니다.</div>
+								<div className="btn-box">
+									<input className="btn form__submit" type="submit" value="검색" onClick={ validateForm }/>
+								</div>
 							</label>
-							<div className="btn-box">
-								<input className="btn form__submit" type="submit" value="검색" onClick={ validateForm }/>
-							</div>
 						</form>
 					</div>
 					<div className="search-result">
+						<h2 className="result-title">
+							{ }
+						</h2>
 						{
 							Movies && 
 							Movies.map((movie: movieType, idx: number) => (

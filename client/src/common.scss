@@ -55,8 +55,13 @@
 	flex-direction: column;
 }
 
-input {
-	border: 1px solid #bbb;
+input:-webkit-autofill {
+	-webkit-box-shadow:0 0 0 50px rgb(22, 27, 32) inset; /* Change the color to your own background color */
+	-webkit-text-fill-color: #bbb;
+}
+input:-webkit-autofill:focus {
+	-webkit-box-shadow: 0 0 0 50px rgb(22, 27, 32) inset;
+	-webkit-text-fill-color: #bbb;
 }
 
 button {
