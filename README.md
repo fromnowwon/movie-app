@@ -1,15 +1,13 @@
-# Boilerplate - MERN Stack (Essential Ver.)
+# Movie search App - MERN Stack
 
 ## Introduction
-개발 시 초기 세팅에 소요되는 불필요한 시간을 줄이고자 제작된 boilerplate 코드입니다.
-여러 가지 예제 코드를 **TypeScript + SCSS** 언어로 변경하여 커스텀하였습니다.
-기본적으로 회원가입, 로그인, 로그아웃 기능이 있습니다.
-각자 스타일에 맞게 커스텀해서 사용하길 추천합니다.
+- 영화 검색 기능, 랭킹 정보가 있는 애플리케이션입니다.
+- 네이버 OPEN API로 검색 기능을 구현하였습니다. 
+- Cheerio 라이브러리를 사용해 크롤링하여 실시간 영화 랭킹을 구현하였습니다.
 <br />
-It is a boilerplate code made to reduce unnecessary time required for initial setting during development.
-I customized various example codes by changing them to **TypeScript + SCSS** language.
-Basically, there are membership, login, and logout functions.
-It is recommended to customize and use according to your style.
+- It is an application with movie search functions and ranking information.
+- This app has a search function implemented with Naver OPEN API.
+- This app implements real-time movie ranking based on data crawled by the Cheerio library.
 
 ## Development Environment
 - Client: React
@@ -37,7 +35,7 @@ Please create a `dev.js` file in the `server>config` path and enter the code bel
 
 ```jsx
 module.exports = {
-	mongoURI: '본인의 mongoDB URI 입력'
+	mongoURI: 'Your mongoDB URI'
 }
 ```
 
@@ -51,60 +49,48 @@ Please run client and server together in the root directory.
 
 ## Tree
 ```
-boilerplate
+movie-app
 ├── client
-│   ├── README.md
-│   ├── package-lock.json
-│   ├── package.json
 │   ├── public
+│   │   ├── images
+│   │   │   └── no-image.jpg
 │   │   ├── index.html
 │   │   ├── manifest.json
 │   │   └── robots.txt
 │   ├── src
-│   │   ├── _actions (Redux action 관리)
-│   │   ├── _reducers (Redux reducer 관리)
-│   │   ├── App.scss
-│   │   ├── App.tsx (Routing 관련 작업 처리)
-│   │   ├── components 
-│   │   │   ├── Config.js (환경 변수 등을 관리)
-│   │   │   └── views (컴포넌트 관리)
+│   │   ├── components
+│   │   │   ├── Config.js (Reuse code management)
+│   │   │   └── views
 │   │   │       ├── Footer
 │   │   │       │   └── Footer.tsx
 │   │   │       ├── LandingPage
 │   │   │       │   ├── LandingPage.tsx
 │   │   │       │   └── Sections
-│   │   │       ├── LoginPage
-│   │   │       │   └── LoginPage.tsx
+│   │   │       │       └── Search
+│   │   │       │           ├── Ranking.tsx
+│   │   │       │           ├── Search.tsx
+│   │   │       │           └── SearchResult.tsx
 │   │   │       ├── NavBar
 │   │   │       │   └── NavBar.tsx
-│   │   │       └── RegisterPage
-│   │   │           └── RegisterPage.tsx
-│   │   ├── hoc (Higher Order Component, 유저에 따라 보여지는 페이지가 다르도록 세팅.)
-│   │   ├── common.scss (공통 스타일 관리)
-│   │   ├── index.scss (리셋 스타일 관리)
+│   │   │       └── NotFound
+│   │   │           └── NotFound.tsx
+│   │   ├── App.scss
+│   │   ├── App.tsx
+│   │   ├── common.scss
+│   │   ├── index.scss
 │   │   ├── index.tsx
-│   │   ├── .env (API 키 등 개인 정보 관리)
-│   │   └── utils (재사용 코드 관리)
+│   │   └── setupProxy.js (Proxy server setting)
+│   ├── package.json
 │   └── tsconfig.json
+├── Procfile (for Heroku)
+├── .env (Environment variable)
+├── package.json
 └── server
     ├── config
-    │   ├── dev.js (development 모드에 필요한 정보 관리)
-    │   ├── key.js (환경 변수 분기점)
-    │   └── prod.js (propduction 모드에 필요한 정보 관리)
-    ├── index.js (서버 기본 세팅)
-    ├── middleware
-    │   └── auth.js (유저 권한 판단)
-    ├── models
-    │   └── User.js (유저 관련 스키마 등 관리)
-    ├── package-lock.json
-    └── package.json
+    │   ├── dev.js
+    │   ├── key.js (Development environment)
+    │   └── prod.js
+    ├── fetching.js (for Crawling)
+    └── index.js (Server)
+
 ```
-
-## Notice
-작성되었지만, 사용하지 않은 Reducer가 있습니다. 🙏
-<br />
-There is a reducer that has been written, but has not been used.
-
-## Reference 🙇‍♂️
-https://youtu.be/fgoMqmNKE18 
-

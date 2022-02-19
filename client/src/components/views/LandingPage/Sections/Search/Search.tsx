@@ -53,7 +53,6 @@ const Search = ():JSX.Element => {
 	const submitKeyword = (e: { preventDefault: () => void; }) => {
 		e.preventDefault();
 		fetchData();
-		console.log("제출!");
 	}
 
 	const validateForm = () => {
