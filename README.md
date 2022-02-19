@@ -5,6 +5,7 @@
 - 네이버 OPEN API로 검색 기능을 구현하였습니다. 
 - Cheerio 라이브러리를 사용해 크롤링하여 실시간 영화 랭킹을 구현하였습니다.
 <br />
+
 - It is an application with movie search functions and ranking information.
 - This app has a search function implemented with Naver OPEN API.
 - This app implements real-time movie ranking based on data crawled by the Cheerio library.
