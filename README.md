@@ -6,16 +6,18 @@
 - 영화 검색 기능, 랭킹 정보가 있는 애플리케이션입니다.
 - 네이버 OPEN API로 검색 기능을 구현하였습니다. 
 - Cheerio 라이브러리를 사용해 크롤링하여 실시간 영화 랭킹을 구현하였습니다.
-<br />
+<br/>
 
 - It is an application with movie search functions and ranking information.
 - This app has a search function implemented with Naver OPEN API.
 - This app implements real-time movie ranking based on data crawled by the Cheerio library.
+<br/>
 
 ## Development Environment
 - Client: React
 - Backend: Node.js, Express.js
 - DB: MongoDB
+<br/>
 
 ## Get started
 루트 디렉토리에서 npm 패키지를 설치해주세요.
@@ -49,6 +51,7 @@ Please run client and server together in the root directory.
 `cd ../`
 <br />
 `npm run dev`
+<br/>
 
 ## Tree
 ```
@@ -86,7 +89,7 @@ movie-app
 │   ├── package.json
 │   └── tsconfig.json
 ├── Procfile (for Heroku)
-├── .env (Environment variable)
+├── .env (Managing personal information as environment variables)
 ├── package.json
 └── server
     ├── config
