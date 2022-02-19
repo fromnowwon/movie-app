@@ -4,27 +4,9 @@ import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { Provider } from 'react-redux';
-import { applyMiddleware, compose, createStore } from 'redux';
-import PromiseMiddleware from 'redux-promise';
-import ReduxThunk from 'redux-thunk';
-import logger from 'redux-logger';
-import { composeWithDevTools } from "redux-devtools-extension";
-import rootReducer from './_reducers';
-
-const enhancer = 
-  process.env.NODE_ENV === "production"
-    ? compose(applyMiddleware(PromiseMiddleware, ReduxThunk))
-    : composeWithDevTools(applyMiddleware(PromiseMiddleware, ReduxThunk, logger));
-
-const store = createStore(rootReducer, enhancer);
-
 ReactDOM.render(
 	<React.StrictMode>
-		<Provider 
-			store={ store }>
 			<App />
-		</Provider>
 	</React.StrictMode>,
 	document.getElementById("root")
 );

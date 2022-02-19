@@ -21,7 +21,7 @@ const Ranking = () => {
 
 		window.setInterval(() => {
 			$rolling.style.transitionDuration = "400ms";
-			$rolling.style.marginTop = "-2em";
+			$rolling.style.marginTop = "-34px";
 
 			window.setTimeout(() => {
 				$rolling.style.transitionDuration = "";
@@ -39,11 +39,6 @@ const Ranking = () => {
 	useEffect(() => {
 		fetchRank()
 	}, [])
-
-	useEffect(() => {
-		Data &&
-		console.log(Data)
-	}, [Data])
 
 	return (
 		<div className="ranking">

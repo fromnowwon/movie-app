@@ -4,10 +4,11 @@ const port = process.env.PORT || 5000;
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const config = require("./config/key");
-const parsing = require('./fetching.js');
+
+require("dotenv").config();
 const cors = require("cors");
 const axios = require("axios");
-require("dotenv").config();
+const parsing = require('./fetching.js');
 
 
 // body-parser option
@@ -33,10 +34,6 @@ app.use(cors(corsOptions));
 // API 데이터 가져오기
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
-
-console.log(CLIENT_ID);
-console.log(CLIENT_SECRET);
-
 
 app.get('/api/search', (req, res) => {
 	const searchKeyword = req.query.query;
