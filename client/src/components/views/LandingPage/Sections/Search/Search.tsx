@@ -21,7 +21,6 @@ const Search = ():JSX.Element => {
 	
 	const fetchData = async () => {
 		const searchKeyword = Value;
-		console.log(searchKeyword)
 
 		try {
 			if (searchKeyword === "") {

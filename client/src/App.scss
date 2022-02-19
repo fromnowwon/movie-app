@@ -7,10 +7,12 @@ body {
 // NavBar
 .navBar {
 	height: 50px;
-	padding: 0.25rem 0.75rem;
+	padding: 0.25rem 1rem;
 	background-color: rgb(22, 27, 32);
 	.navBar__inner {
+		max-width: 1280px;
 		height: 100%;
+		margin: auto;
 	}
 	.logo {
 		a {
@@ -21,11 +23,13 @@ body {
 
 // Landing page
 .landing-page {
-	padding: 1rem 0.75rem;
+	padding: 1rem;
 }
 
 // Search 
 .search-section {
+	max-width: 1280px;
+	margin: auto;
 	h2 {
 		margin-bottom: 0.5rem;
 		font-size: 0.875rem;
@@ -130,6 +134,7 @@ body {
 			margin-top: 1rem;
 			.result-title {
 				margin-bottom: 1.5rem;
+				font-size: 0.875rem;
 				color: rgb(155, 155, 155);
 			}
 			.search-result__list {
@@ -200,7 +205,49 @@ form {
 @media (min-width: 576px) {}
 
 /* Tablet */
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+	// Search 
+	.search-section {
+		padding: 0;
+		.ranking {
+			width: 170px;
+		}
+
+		.search-cont {
+			width: calc(100% - 170px);
+			margin-top: 0;
+			padding-left: 2rem;
+			.search-form {
+				max-width: 400px;
+			}
+			.search-result {
+				margin-top: 2rem;
+				.result-title {
+					font-size: 1.25rem;
+					margin-bottom: 1.5rem;
+				}
+				.movie-poster {
+					width: 140px;
+				}
+				.movie-info {
+					width: calc(100% - 140px);
+					padding-left: 1.5rem;
+					li {
+						+ li {
+							margin-top: 0.5rem;
+						}
+					}
+					.movie-title {
+						font-size: 1rem;
+					}
+					.movie-info__more {
+						margin-top: 1rem;
+					}
+				}
+			}
+		}
+	}
+}
 
 /* Desktop */
 @media (min-width: 992px) {}
