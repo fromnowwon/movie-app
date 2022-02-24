@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 5000;
-const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const config = require("./config/key");
 
@@ -10,19 +9,12 @@ const cors = require("cors");
 const axios = require("axios");
 const parsing = require('./fetching.js');
 
+// body-parser
+app.use(express.json()); 
+app.use(express.urlencoded( {extended : true } ));
 
-// body-parser option
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
+// cookie-parser
 app.use(cookieParser());
-
-const mongoose = require("mongoose");
-const { response } = require("express");
-mongoose
-	.connect(config.mongoURI)
-	.then(() => console.log("MongoDB Connected..."))
-	.catch((error) => console.log(error));
 
 // CORS 허용
 let corsOptions = {
