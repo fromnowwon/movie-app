@@ -1,4 +1,4 @@
-# Movie search App - MERN Stack
+# Movie search App
 
 📎 [Demo](https://nemo-movie-app.herokuapp.com/)
 
@@ -16,7 +16,6 @@
 ## Development Environment
 - Client: React
 - Backend: Node.js, Express.js
-- DB: MongoDB
 <br/>
 
 ## Get started
@@ -34,15 +33,6 @@ Please install the npm package from the client path.
 <br />
 `npm install`
 
-`server>config` 경로에 `dev.js` 파일을 생성하여 아래 코드를 입력해주세요. (본인의 DB가 필요합니다.) `dev.js` 파일은 `.gitignore`에 포함해주세요.
-<br />
-Please create a `dev.js` file in the `server>config` path and enter the code below. (You need your own DB.) Please include the 'dev.js' file in the '.gitignore' list.
-
-```jsx
-module.exports = {
-	mongoURI: 'Your mongoDB URI'
-}
-```
 
 루트 디렉토리에서 client와 server를 같이 실행해주세요.
 <br />
@@ -92,10 +82,6 @@ movie-app
 ├── .env (Managing personal information as environment variables)
 ├── package.json
 └── server
-    ├── config
-    │   ├── dev.js
-    │   ├── key.js (Development environment)
-    │   └── prod.js
     ├── fetching.js (for Crawling)
     └── index.js (Server)
 
