@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 5000;
-const cookieParser = require("cookie-parser");
+// const cookieParser = require("cookie-parser");
 const config = require("./config/key");
 
 require("dotenv").config();
@@ -14,14 +14,14 @@ app.use(express.json());
 app.use(express.urlencoded( {extended : true } ));
 
 // cookie-parser
-app.use(cookieParser());
+// app.use(cookieParser());
 
-const mongoose = require("mongoose");
-const { response } = require("express");
-mongoose
-	.connect(config.mongoURI)
-	.then(() => console.log("MongoDB Connected..."))
-	.catch((error) => console.log(error));
+// const mongoose = require("mongoose");
+// const { response } = require("express");
+// mongoose
+// 	.connect(config.mongoURI)
+// 	.then(() => console.log("MongoDB Connected..."))
+// 	.catch((error) => console.log(error));
 
 // CORS 허용
 let corsOptions = {

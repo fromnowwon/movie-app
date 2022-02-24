@@ -1,4 +1,4 @@
-// Production mode
-module.exports = {
-	mongoURI: process.env.MONGO_URI
-}
+// // Production mode
+// module.exports = {
+// 	mongoURI: process.env.MONGO_URI
+// }
