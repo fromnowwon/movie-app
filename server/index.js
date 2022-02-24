@@ -16,6 +16,13 @@ app.use(express.urlencoded( {extended : true } ));
 // cookie-parser
 app.use(cookieParser());
 
+const mongoose = require("mongoose");
+const { response } = require("express");
+mongoose
+	.connect(config.mongoURI)
+	.then(() => console.log("MongoDB Connected..."))
+	.catch((error) => console.log(error));
+
 // CORS 허용
 let corsOptions = {
 	origin: 'https://openapi.naver.com',
