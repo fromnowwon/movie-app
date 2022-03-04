@@ -67,15 +67,15 @@ const Search = ():JSX.Element => {
 	}
 
 	const validateForm = () => {
-		const $form = document.querySelector('form');
-		const $input = $form?.querySelectorAll('input');
-		
+		const $form = document.querySelector('.contact-form') as HTMLElement;
+		const $input = $form.querySelectorAll('.form__input') as NodeListOf<HTMLInputElement>;
+
 		if ($form) {
-			$input?.forEach( input => {
-				input.addEventListener('invalid', () => {
-					// invalid가 있을 경우 form에 클래스 추가
+			$input.forEach( input => {
+				if (input.value === "") {
+					input.classList.add('invalid-input');
 					$form.classList.add('invalid-form');
-				});
+				}
 			});
 		}
 	}
