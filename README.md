@@ -16,7 +16,7 @@
 <br/>
 
 ## Development Environment
-- Client: React
+- Client: React, TypeScript, SCSS
 - Backend: Node.js, Express.js
 <br/>
 
