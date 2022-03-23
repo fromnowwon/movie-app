@@ -4,7 +4,7 @@
 
 <br/>
 
-![](./public/images/react-movie-app-16_9.gif)
+![](./client/public/images/react-movie-app-16_9.gif)
 
 <br/>
 
