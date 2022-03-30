@@ -24,8 +24,6 @@ const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
 
 app.get('/api/search', (req, res) => {
 	const searchKeyword = req.query.query;
-
-	console.log(searchKeyword)
 	
 	axios.get('https://openapi.naver.com/v1/search/movie.json', 
 		{

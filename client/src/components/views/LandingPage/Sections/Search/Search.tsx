@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import axios from 'axios';
 import SearchResult from "./SearchResult";
 import Ranking from "./Ranking";
@@ -18,8 +18,11 @@ export interface movieType {
 const Search = ():JSX.Element => {
 	const [Movies, setMovies] = useState([]);
 	const [Value, setValue] = useState("");
-	const [Loading, setLoading] = useState(false);
-	
+	const [loading, setLoading] = useState(false);
+	const formRef = useRef<HTMLFormElement>(null);
+	const inputRef = useRef<HTMLInputElement>(null);
+	const resultTitleRef = useRef<HTMLHeadingElement>(null);
+
 	const fetchData = async () => {
 		const searchKeyword = Value;
 		const $resultTitle = document.querySelector('.result-title') as HTMLElement
@@ -52,8 +55,11 @@ const Search = ():JSX.Element => {
 	}
 
 	const resultTitle = () => {
-		const $resultTitle = document.querySelector('.result-title') as HTMLElement
-		$resultTitle.innerHTML = `"${Value}"의 검색 결과`
+		const $resultTitle = resultTitleRef.current;
+
+		if ($resultTitle) {
+			$resultTitle.innerHTML = `"${Value}"의 검색 결과`;
+		}
 	}
 
 	const keywordChange = (e: { preventDefault: () => void; target: { value: string }; }) => {
@@ -67,16 +73,18 @@ const Search = ():JSX.Element => {
 	}
 
 	const validateForm = () => {
-		const $form = document.querySelector('.contact-form') as HTMLElement;
-		const $input = $form.querySelectorAll('.form__input') as NodeListOf<HTMLInputElement>;
+		const $resultTitle = resultTitleRef.current;
+		const $form = formRef.current;
+		const $input = inputRef.current;
 
-		if ($form) {
-			$input.forEach( input => {
-				if (input.value === "") {
-					input.classList.add('invalid-input');
-					$form.classList.add('invalid-form');
-				}
-			});
+		if ($input && $form && $resultTitle) {
+			if ($input.value === "") {
+				$input.classList.add('invalid-input');
+				$form.classList.add('invalid-form');
+				setMovies([]);
+				setValue("");
+				$resultTitle.innerHTML = '';
+			}
 		}
 	}
 
@@ -87,9 +95,18 @@ const Search = ():JSX.Element => {
 				<div className="search-cont">
 					<div className="search-form">
 						<h2>영화 검색</h2>
-						<form onSubmit={ submitKeyword }>
+						<form onSubmit={ submitKeyword } ref={ formRef }>
 							<label htmlFor="name" className="form__label">
-								<input type="text" id="movie-title" className="form__input" name="movie_title" onChange={ keywordChange } placeholder="영화 제목을 입력해주세요." required />
+								<input 
+									id="movie-title"
+									className="form__input"
+									ref={ inputRef }
+									type="text"
+									name="movie_title"
+									onChange={ keywordChange } 
+									placeholder="영화 제목을 입력해주세요."
+									required
+								/>
 								<div className="validation-note">영화 제목이 입력되지 않았습니다.</div>
 								<div className="btn-box">
 									<input className="btn form__submit" type="submit" value="검색" onClick={ validateForm }/>
@@ -98,9 +115,9 @@ const Search = ():JSX.Element => {
 						</form>
 					</div>
 					<div className="search-result">
-						<h2 className="result-title"></h2>
+						<h2 className="result-title" ref={ resultTitleRef }></h2>
 						{
-							Loading 
+							loading 
 							? (<div className="fallback-message">Laoding...</div>)
 							: (
 								Movies && 
