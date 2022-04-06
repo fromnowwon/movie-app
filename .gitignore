@@ -1,0 +1,8 @@
+# dependencies
+node_modules
+
+# Local mode
+dev.js
+
+# API KEY
+# .env
