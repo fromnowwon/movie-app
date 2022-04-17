@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, SetStateAction } from "react";
 import axios from 'axios';
 import SearchResult from "./SearchResult";
 import Ranking from "./Ranking";
@@ -54,6 +54,10 @@ const Search = ():JSX.Element => {
 		setLoading(false);
 	}
 
+	const keywordChange = (e: { target: { value: SetStateAction<string>; }; }) => {
+		setValue(e.target.value);
+	}
+
 	const resultTitle = () => {
 		const $resultTitle = resultTitleRef.current;
 
@@ -62,10 +66,7 @@ const Search = ():JSX.Element => {
 		}
 	}
 
-	const keywordChange = (e: { preventDefault: () => void; target: { value: string }; }) => {
-		e.preventDefault();
-		setValue(e.target.value);
-	}
+	
 
 	const submitKeyword = (e: { preventDefault: () => void; }) => {
 		e.preventDefault();
